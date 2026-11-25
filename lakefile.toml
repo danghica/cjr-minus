@@ -1,0 +1,34 @@
+name = "cjrminus"
+version = "0.1.0"
+defaultTargets = ["Cjr"]
+
+[[lean_lib]]
+name = "Cjr"
+
+[[lean_exe]]
+name = "cjr"
+root = "Main"
+
+[[lean_exe]]
+name = "test-printer"
+root = "TestPrinter"
+
+[[lean_exe]]
+name = "test-linked-list"
+root = "TestLinkedList"
+
+[[lean_exe]]
+name = "test-iterator"
+root = "TestIterator"
+
+[[lean_exe]]
+name = "test-mergesort"
+root = "TestMergeSort"
+
+[[lean_exe]]
+name = "test-mergesort-cost"
+root = "TestMergeSortCost"
+
+[[lean_exe]]
+name = "estimate-mergesort"
+root = "EstimateMergeSort"

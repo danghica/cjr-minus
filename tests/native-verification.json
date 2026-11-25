@@ -1,0 +1,111 @@
+{
+  "compiler": "Cangjie Compiler: 1.0.5 (cjnative)",
+  "target": "aarch64-apple-darwin",
+  "command": "python3 tests/native_printer.py",
+  "result": "passed",
+  "programs": [
+    {
+      "name": "arith",
+      "sha256": "918df60077fa18beecb266a51f39e6bcef9bcb615c32b18a903d16edb04212bb",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "cell",
+      "sha256": "cf7e213a0b0ab699872e00c3e94e22b1d000e2a0788d1f543d9bf08013d9804f",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "class_upd",
+      "sha256": "296ab0ed2f763429ff45cdcf7e0a5e92ad6022f2414a126d6797f0815a547669",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "counter",
+      "sha256": "291286da1cdd07e51550275a3caf71baf31551dc5169c943428876030f70d758",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "factorial",
+      "sha256": "243668c9aa6c1cee562f23dbe649cacad3859b6e843577678d3613886687aeea",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "frame_call",
+      "sha256": "e994e2604207bd130fba86b754e834bdf50fc10f21cbdad7563b246d9b6eec5b",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "linked_list",
+      "sha256": "a4a7522f694cb0975c969904c414eada66816a186637d6bd5abbf6471db3a428",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "list_iterator",
+      "sha256": "2d1124dab9226abc1dc5bb47e0d2e8c69bc773da22a392b84a20fc68227e5344",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "mergesort",
+      "sha256": "645797965c9fd033ec799f8b7a83544dc88f35245842844735e13fac144132a7",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "method",
+      "sha256": "2cba830a0078f89426b131fc9deca629748b1556094aec62785aec0a00a11933",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "raw",
+      "sha256": "eac2b6fcd4ba82c1930f2f6ec0b04be06699d7f232b60ee294619788d226607d",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "self_reference",
+      "sha256": "981eb2116c73c60ed970172ea471fd9c62b3bb4a6c703d711de8531074200f71",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "strict_and",
+      "sha256": "8d5f9b04f4b7c114a32ed3968b2692f38c24b1f2eee5990f1970ca20cdaefc46",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "struct_upd",
+      "sha256": "77a7a98a4fc9a36fa24736931c35a32a6f975d64e4746b5af6ed9473ce414012",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "sum_block",
+      "sha256": "8933a22de77d4188e477b0dae3cb55d6a1da6276ea647dedae3a764d89f9bcae",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "swap",
+      "sha256": "07fca4bb743175b1c03f50b712aa410f8240cf51afa01972db843ce41c5ae851",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    },
+    {
+      "name": "vtable",
+      "sha256": "7f55fd0da5b5834dda71a2306e935ad1c64f3f7761620f6f8d1e614d69dca83e",
+      "unchanged_compile_and_run": "passed",
+      "native_result_assertions": "passed"
+    }
+  ],
+  "note": "Result assertions replace main only; this is runtime validation, not a compiler correctness proof."
+}

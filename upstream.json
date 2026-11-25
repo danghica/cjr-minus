@@ -1,0 +1,152 @@
+{
+  "repository": "https://github.com/danghica/cjr-core",
+  "commit": "c663bd896f92d4646901786642af823c6a278bed",
+  "file": "theories/lang.v",
+  "sha256": "fb06de8296f3ae9d5e239cd0127be7ea2729a5a29b6f26e05cf54d4f7816fda3",
+  "rules": [
+    {
+      "upstream": "RecS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".recE f x body"
+    },
+    {
+      "upstream": "AppS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".app (.val (.recE f x body)) (.val v)"
+    },
+    {
+      "upstream": "LetS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".letE x (.val v) body"
+    },
+    {
+      "upstream": "VarBindS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".varBind x (.val v) body"
+    },
+    {
+      "upstream": "PopS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".pop l (.val v)"
+    },
+    {
+      "upstream": "StackLoadS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".stackLoad (.val (.lit (.stack l)))"
+    },
+    {
+      "upstream": "StackAssignS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".stackAssign (.val (.lit (.stack l))) (.val v)"
+    },
+    {
+      "upstream": "StackFieldS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".stackFieldStore (.val (.lit (.stack l))) i (.val v)"
+    },
+    {
+      "upstream": "IfTrueS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".ifE (.val (.lit (.bool true))) a _"
+    },
+    {
+      "upstream": "IfFalseS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".ifE (.val (.lit (.bool false))) _ b"
+    },
+    {
+      "upstream": "WhileS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".whileE a b"
+    },
+    {
+      "upstream": "SeqS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".seq (.val _) b"
+    },
+    {
+      "upstream": "BinOpS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".binOp op (.val a) (.val b)"
+    },
+    {
+      "upstream": "StructStepS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".struct vs (.val v :: es)"
+    },
+    {
+      "upstream": "StructDoneS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".struct vs []"
+    },
+    {
+      "upstream": "StructLoadS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".structLoad (.val (.struct vs)) i"
+    },
+    {
+      "upstream": "AllocS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".alloc (.val (.lit (.int n)))"
+    },
+    {
+      "upstream": "FreeS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".free (.val (.lit (.ptr l)))"
+    },
+    {
+      "upstream": "LoadS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".load (.val (.lit (.ptr l)))"
+    },
+    {
+      "upstream": "StoreS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".store (.val (.lit (.ptr l))) (.val v)"
+    },
+    {
+      "upstream": "OffsetS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".offset (.val (.lit (.ptr l))) (.val (.lit (.int i)))"
+    },
+    {
+      "upstream": "NewStepS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".new vs (.val v :: es)"
+    },
+    {
+      "upstream": "NewDoneS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".new vs []"
+    },
+    {
+      "upstream": "FieldLoadS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".fieldLoad (.val (.lit (.obj o))) i"
+    },
+    {
+      "upstream": "FieldStoreS",
+      "lean_file": "Cjr/HeadStep.lean",
+      "pattern": ".fieldStore (.val (.lit (.obj o))) i (.val v)"
+    }
+  ],
+  "contexts": 29,
+  "expressions": 26,
+  "printer": {
+    "file": "tools/extraction/rocq/cj_print.v",
+    "sha256": "9df5d8fdc3e4c6cb861eb429f739808238ab7197e24f69ec6cd50c0e6433dcd6",
+    "fixtures": "tools/extraction/rocq/emit_cj.v",
+    "fixture_sha256": "1316ebe0ad2ff1545f81ebb542fc0dd69256054a6f6bba29ec7d3daf2f67aa2d",
+    "goldens": {
+      "arith.cj": "a4707999d6b9399752b95f6212ee00c925125f151ec75c382a2bec16040b9b7b",
+      "cell.cj": "8f70cc689a344ee4218fe55291d2f9fde11e23da78e2f3f4c642f724e6da4bb7",
+      "class_upd.cj": "86b45d0f180ae800d78e8fa3f7f0496f1a2ee27df4323625cb999edb5c8308a0",
+      "frame_call.cj": "5b97166b9a27d84cfae1cb83e5c544c99d2b8afcfd627c58c50e66d5bafb8cdd",
+      "struct_upd.cj": "98c8cf076fa41da85ac89a184c39615148cd69498af2547f6182684f7fcc4910",
+      "sum_block.cj": "28276bd0d2c5ce10fbfbd6236ff9807e66dde14bcb997788a68082fb41025917",
+      "swap.cj": "1f0999f441ecac1e8e5041517242f57b9dc8c1f5785786a52fba92ddd3fedbe6",
+      "vtable.cj": "235c3a931fdd5b1459dbe9385b78e3f43ed0195156d907a64f3675187da9e7c2"
+    },
+    "compatibility": "Output matches eight upstream monomorphic fixtures except generator banner. Checked emit additionally preserves strict And evaluation."
+  }
+}

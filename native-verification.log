@@ -1,0 +1,20 @@
+Cangjie Compiler: 1.0.5 (cjnative)
+Target: aarch64-apple-darwin
+PASS arith: original and result assertions
+PASS struct_upd: original and result assertions
+PASS cell: original and result assertions
+PASS class_upd: original and result assertions
+PASS vtable: original and result assertions
+PASS factorial: original and result assertions
+PASS strict_and: original and result assertions
+PASS counter: original and result assertions
+PASS raw: original and result assertions
+PASS method: original and result assertions
+PASS self_reference: original and result assertions
+PASS sum_block: original and result assertions
+PASS swap: original and result assertions
+PASS frame_call: original and result assertions
+PASS linked_list: original and result assertions
+PASS list_iterator: original and result assertions
+PASS mergesort: original and result assertions
+All 17 emitted programs compiled and executed successfully.
