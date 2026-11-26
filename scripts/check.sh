@@ -8,3 +8,4 @@ lake exe test-linked-list
 lake exe test-iterator
 lake exe test-mergesort
 lake exe test-mergesort-cost
+sh voting/check.sh

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/cjr-minus-logo.jpg" alt="cjr− logo: an open black radical with a red horizontal brushstroke above the cjr− wordmark" width="640">
+</p>
+
 # CJR operational semantics in Lean
 
 A self-contained Lean 4 reconstruction of the operational semantics in
@@ -252,3 +256,70 @@ lake exe test-mergesort-cost
 The estimator reports a 406,970-step safe budget for 1,000 nodes. `Counted.lean`
 connects the exact cost model to small-step execution; `Bounds.lean` proves the
 logarithmic bounds and that the budget is sufficient interpreter fuel.
+
+## Ranked-choice voting and its proved properties
+
+[`voting/`](voting/README.md) implements single-winner instant-runoff voting and
+sequential selection of a user-supplied number of choices. The counting loops,
+transfers, allocations, residual Pareto checks and result-list construction are
+CJR expressions, executed by the same small-step interpreter and emitted through
+the checked Cangjie printer. The input supports partial rankings and abstentions.
+Tied minimum-count candidates are eliminated by greatest candidate ID, making
+the result deterministic but dependent on candidate numbering in tied elections.
+Sequential selection removes each elected candidate and starts a fresh runoff;
+it is not proportional STV.
+
+The voting development separates general, kernel-checked theorems from finite
+execution tests:
+
+- **Voter anonymity:** permuting whole ballots leaves the checked generated
+  program unchanged, preserving its executions, returned values and final states.
+  `election_anonymous` covers single-winner elections; `topElection_anonymous`
+  covers every selection limit. Their interpreter counterparts hold for every
+  fuel value. The proof canonicalizes voter order without changing preference
+  order or repeated ballots. This is invariance under voter permutation, rather
+  than candidate neutrality or a claim about identity privacy.
+  See [the anonymity proof](voting/ANONYMITY.md) and
+  [the multi-choice development](voting/TOP_CHOICES.md).
+- **Pareto exclusion for the checked single-winner entry point:** if every voter
+  strictly prefers valid candidate A to B, no completed election returns B.
+  A ranked candidate is preferred to an omitted one. The generated CJR result
+  guard rejects unanimously dominated results, and `election_pareto_all_profiles`
+  proves the exclusion against operational execution, including empty electorates.
+  `paretoGuard_accepts` proves that an eligible result is preserved together with
+  the core's final state. This is a safety theorem: it neither proves termination
+  nor establishes that the unguarded counting core always passes the guard.
+  See [the statement, guard and proof](voting/PARETO.md).
+- **Monotonicity is false:** `election_not_monotone : ¬ Monotone` proves a concrete
+  seven-voter counterexample for the checked single-winner program. Raising the
+  original winner on one ballot changes the winner from candidate 0 to candidate
+  1. Kernel-checked interpreter observations, interpreter soundness and execution
+  determinism establish both outcomes and exclude the original winner after the
+  change. All candidates are Pareto-eligible, so the guard is not responsible.
+  See [the ballots and counterproof](voting/MONOTONICITY.md).
+
+The multi-choice implementation checks Pareto eligibility against the residual
+profile at each position. Its general operational Pareto theorem, distinctness
+and length bounds, termination and full sequential-IRV correctness are not
+claimed. Nor does the voting development prove arbitrary-input correctness or
+memory safety of the counting core, or semantics preservation of native code
+emission. Native functions accepting raw matrices bypass the checked Lean
+builder's input validation and canonicalization. These boundaries matter when
+using the extracted implementation independently.
+
+Validation adds 413 single-winner and 1,057 multi-choice completed CJR executions
+against independent reference implementations, checking temporary-memory cleanup,
+plus 97 voter-swap regressions. The native harness checks 262 single-winner and
+75 multi-choice profiles/limits, input preservation, guarded results, and the two
+monotonicity-counterexample outcomes. These finite checks supplement the proofs;
+they do not replace general theorems. The voting audits report only standard
+Lean axioms, with no admitted proofs or project-defined axioms.
+
+```sh
+sh scripts/check.sh
+# Native checks additionally require Cangjie 1.0.5:
+(cd voting && python3 test_native.py)
+```
+
+The main check script includes the voting proof audits and CJR regressions.
+For interfaces, examples and detailed assumptions, see [the voting README](voting/README.md).

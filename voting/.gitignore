@@ -1,0 +1,16 @@
+*.olean
+*.ilean
+__pycache__/
+.venv/
+.pytest_cache/
+build/
+node_modules/
+web/
+tests_web/
+scripts/
+.railway/
+Dockerfile
+.dockerignore
+.railwayignore
+package*.json
+requirements*.txt

@@ -1,8 +1,8 @@
 .lake/
 .DS_Store
+__pycache__/
 
 # Other work sharing this directory
 /Telegram_Cangjie/
 /output/
-/voting/
 /postbox-specification.md
